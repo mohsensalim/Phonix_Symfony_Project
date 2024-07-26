@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -25,10 +26,21 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         $products= $this->productRepository->findAll();
-        $categories= $this->categoryRepository->findAll();
+        $categorys= $this->categoryRepository->findAll();
         return $this->render('home/index.html.twig', [
             'products' => $products,   
-            'categories' => $categories
+            'categorys' => $categorys
+        ]);
+    }
+
+    #[Route('/product/category/{category}', name: 'app_product_category')]
+    public function categoryProducts(Category $category): Response
+    {
+        $categorys= $this->categoryRepository->findAll();
+        
+        return $this->render('home/index.html.twig', [
+            'products' => $category->getProducts(),
+            'categorys' => $categorys,
         ]);
     }
 }
