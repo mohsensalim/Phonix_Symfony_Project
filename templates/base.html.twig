@@ -47,20 +47,61 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Home</a>
         </li>
+        {% if not is_granted('ROLE_ADMIN') %}
+          
+        
         <li class="nav-item">
-          <a class="nav-link" href="#">Orders</a>
+          <a class="nav-link" href="{{path('user_order_list')}}">Orders</a>
         </li>
+        {% endif %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Account
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Sign In</a></li>
-            <li><a class="dropdown-item" href="#">Sign Up</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            
+            {% if (not app.user) %}
+
+            <li><a class="dropdown-item" href="{{path('app_login')}}">Sign In</a></li>
+            <li><a class="dropdown-item" href="{{path('app_register')}}">Sign Up</a></li>
+              
+            {% elseif app.user %}
+
+
+            
+            <li><a class="dropdown-item" href="#">{{app.user.username}}</a></li>
+            <li><a class="dropdown-item" href="{{path('app_logout')}}">Logout</a></li>
+            {% endif %}
+            </ul>
+
+            </li>
+
+            <li  class="nav-item dropdown">
+            {% if is_granted('ROLE_ADMIN')  %}
+                      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu">
+            
+            
+
+            <li><a class="dropdown-item" href="{{path('app_product')}}">Products</a></li>
+            <li><a class="dropdown-item" href="{{path('store_product')}}">Add Product</a></li>
+            <li><a class="dropdown-item" href="{{path('orders_list')}}">Orders</a></li>
+            
+
           </ul>
         </li>
+            {% endif %}
+
+            
+
+          </ul>
+        </li>
+
+            
+            
         
       </ul>
     </div>

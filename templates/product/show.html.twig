@@ -51,7 +51,7 @@
                         
                         <h5><sapn class="text text-danger">{{ product.price }} DH</sapn></h5>
                        <h5><sapn class="text text-success">{{ product.category.name }}</sapn></h5>
-                       <a href="{{ path('home') }}" class="btn btn-sm btn-outline-dark mx-1">Buy Now </a>
+                       <a href="{{ path('store_order',{product: product.id}) }}" class="btn btn-sm btn-outline-dark mx-1">Buy Now </a>
         </div>
         </div>
         </div>
