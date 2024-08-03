@@ -5,61 +5,61 @@
 {% block body %}
 
     <div class="row my-5">
-        <div class="col-md-12 position-fixed top-50 translate-middle-y  p-3">
-        <div class="card" style="width:100%; height:100%; ">
-            
-          {% if product %}
-                
-            
-            
-               <div class="col-md-4">
-               
-                <div class="card">
-
-                    {% if product.image %}
-                    <img src="{{asset('uploads/'~ product.image)}}" alt="product.image"
-                    class="card-img-top" >
-            
-                    {% else %}
-                    <img src="{{asset('images/none.jpg')}}" alt="product.image"
-                    class="card-img-top" >
-                    {% endif %}
-                    <div class="card-body">
-                    
-                        {# <h5 class="card-title">{{ product.name }}</h5>
-                        
-                        <h5><sapn class="text text-danger">{{ product.price }} DH</sapn></h5>
-                       <h5><sapn class="text text-success">{{ product.category.name }}</sapn></h5>
-                       <a href="{{ path('home') }}" class="btn btn-sm btn-outline-dark mx-1">Buy Now </a> #}
-            {% else %}
-
-            <div class="alert alert-info">
-            
-            No ProductFound !
-            </div>
-
-            {% endif %}
-
-        </div>
         
-        <div class="position-fixed top-50 translate-middle-y  p-3" style="right: 100px; height:200px">
-        <div class="card">
-        <div class="card-body">
-        <p class="card-title">{{ product.description }}</p></div>
-
-          <h5 class="card-title">{{ product.name }}</h5>
+                    
                         
-                        <h5><sapn class="text text-danger">{{ product.price }} DH</sapn></h5>
-                       <h5><sapn class="text text-success">{{ product.category.name }}</sapn></h5>
-                       <a href="{{ path('store_order',{product: product.id}) }}" class="btn btn-sm btn-outline-dark mx-1">Buy Now </a>
-        </div>
-        </div>
-        </div>
-            
-        </div>
-       
+                            {% if product %}
+                                    
+                                
+                                
+                                <div class="col-md-6 ">
+                                
+                                    <div class="card">
 
-                </div>
+                                        {% if product.image %}
+                                        <img src="{{asset('uploads/'~ product.image)}}" alt="product.image"
+                                        class="card-img-top" >
+                                
+                                        {% else %}
+                                        <img src="{{asset('images/none.jpg')}}" alt="product.image"
+                                        class="card-img-top img-fluid" >
+                                        {% endif %}
+                                        
+                                        
+                                            {# <h5 class="card-title">{{ product.name }}</h5>
+                                            
+                                            <h5><sapn class="text text-danger">{{ product.price }} DH</sapn></h5>
+                                        <h5><sapn class="text text-success">{{ product.category.name }}</sapn></h5>
+                                        <a href="{{ path('home') }}" class="btn btn-sm btn-outline-dark mx-1">Buy Now </a> #}
+                                        {% else %}
+
+                                        <div class="alert alert-info">
+                                        
+                                        No ProductFound !
+                                        </div>
+
+                                        {% endif %}
+
+                                    </div>
+
+       
+        
+                
+
+                
+                              <div class="position-fixed top-50 translate-middle-y  p-3 col-md-5 " style=" right: 10px; height:430px">
+                                    <div class="card  ">
+                                        <div class="card-body col-md-6">
+                                        <p class="card-title text text-break">{{ product.description }}</p></div>
+
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                                        
+                                                        <h5><sapn class="text text-danger">{{ product.price }} DH</sapn></h5>
+                                                    <h5><sapn class="text text-success">{{ product.category.name }}</sapn></h5>
+                                                    <a href="{{ path('store_order',{product: product.id}) }}" class="btn btn-sm btn-outline-dark mx-1">Buy Now </a>
+                                        </div>
+                                    </div>
+                             
                </div>
         
 
